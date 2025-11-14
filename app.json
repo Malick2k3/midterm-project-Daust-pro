@@ -1,0 +1,52 @@
+{
+  "expo": {
+  "name": "Daust pro",
+    "slug": "daust-pro",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#10b981",
+      "resizeMode": "contain"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.daustpro.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to provide accurate prayer times and Qibla direction.",
+        "NSLocationAlwaysUsageDescription": "This app needs access to your location to provide accurate prayer times and Qibla direction.",
+        "UIBackgroundModes": [
+          "location"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.daustpro.app",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Daust Pro to use your location to provide accurate prayer times and Qibla direction."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#10b981",
+          "sounds": []
+        }
+      ]
+    ]
+  }
+}
+
