@@ -1,63 +1,66 @@
-## Daust Pro - Prayer Times & Qibla App
+# Daust Pro
 
-This repository contains the source code for Daust Pro, a React Native + Expo app that provides prayer times, a Qibla compass, a Tasbih counter, and an Islamic calendar.
+Daust Pro is a React Native and Expo mobile app built around a few daily Islamic utilities in one place: prayer times, Qibla direction, Tasbih, Quran browsing, and the Islamic calendar.
 
-## About
+The app is designed to stay useful even when the network is unreliable. Prayer times are loaded with a cached-first flow, manual city selection is supported when location access is not available, and the Qibla feature falls back safely when device sensors are limited.
 
-Daust Pro is a mobile-first Islamic utility app. Key features implemented in this branch:
+## Features
 
-- Accurate prayer times with a cached-first UX (uses Aladhan API as a fallback)
-- Qibla compass using device magnetometer (with fallbacks for web)
-- Tasbih (digital dhikr) counter
+- Prayer times with cached-first loading and Aladhan API refresh
+- Qibla compass using the device magnetometer when available
+- Tasbih counter for daily dhikr
 - Islamic calendar with Hijri date formatting
-- Local notification scheduling for prayer reminders (some notification features require a dev build)
-- Manual city selection with persisted user location and an auto-location toggle
+- Quran browsing with remote fetch and local fallback data
+- Manual city selection with persisted location preferences
+- Local prayer reminder scheduling through Expo Notifications
 
-App display name: Daust pro
-Developer: Cheikh El Hadji Malick Niang mou sell mii
+## Stack
 
-## Quick start (development)
+- React Native
+- Expo
+- React Navigation
+- AsyncStorage
+- Expo Location
+- Expo Sensors
+- Expo Notifications
+- Aladhan API
+- Quran API
 
-1. Install dependencies:
+## Project structure
 
-```powershell
+- `components/` shared UI building blocks
+- `screens/` main app screens
+- `services/` API, sensor, location, and notification integrations
+- `constants/` configuration and fallback data
+- `utils/` storage, validation, and formatting helpers
+- `contexts/` app-wide theme state
+
+## Run locally
+
+```bash
 npm install
-```
-
-2. Start the Expo development server (clear cache recommended):
-
-```powershell
 npx expo start --clear
 ```
 
-3. Open the app on device/emulator
+Then open the app in one of these ways:
 
-- On a physical device: use the Expo Go app and scan the QR code shown by Metro.
-- On Android emulator: `npm run android` (requires Android Studio/emulator setup).
-- On iOS Simulator (macOS only): `npm run ios`.
-- Web: `npm run web`.
+- Android emulator: `npm run android`
+- iOS simulator: `npm run ios`
+- Web preview: `npm run web`
+- Physical device: scan the Expo QR code in Expo Go
 
-## Notes 
+## Notes for reviewers
 
-- Expo Go has limitations for push/notifications. To test full notification flows (especially on Android) you need a development build or standalone app. See: https://expo.dev/development-builds
-- The app uses a cached-first approach for prayer times: when the API is slow the app will show cached times immediately and then update when fresh data arrives.
+- Full notification behavior is best tested in a development build. Expo Go has limits around native notification flows.
+- The Qibla compass works best on physical devices with a magnetometer.
+- Cached prayer times are used as a fallback when a fresh API request fails or is slow.
 
-## File structure (high level)
+## Main screens
 
-- `components/` — reusable UI components
-- `screens/` — application screens (PrayerTimes, Home, Qibla, Tasbih, Calendar, Settings)
-- `services/` — integrations (location, magnetometer, notifications, prayerTimes API)
-- `utils/` — helpers (date/time formatting, persistent storage)
-
-## Local verification checklist
-
-1. Run `npm install`.
-2. Start Metro: `npx expo start --clear`.
-3. Open the app on your device/emulator. Verify:
-   - The Prayer Times screen shows cached timings quickly and refreshes when online.
-   - The Qibla compass rotates with device orientation (on physical devices).
-   - Notifications are scheduled (check console logs) — for full functionality use a dev build.
-
-
-
-
+- Home
+- Prayer Times
+- Qibla
+- Tasbih
+- Quran
+- Calendar
+- Settings

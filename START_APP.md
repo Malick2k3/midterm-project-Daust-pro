@@ -1,4 +1,4 @@
-# Start the App — Daust pro
+# Start the App — Daust Pro
 
 This file explains simple steps to run the app locally for development and testing.
 
@@ -20,8 +20,8 @@ npx expo start --clear
 
 ## Important notes for this project
 
-- App name: Daust pro
-- Developer: Cheikh El Hadji Malick Niang mou sell mii
+- App name: Daust Pro
+- Developer: Cheikh El Hadji Malick Niang
 - The Prayer Times screen uses a cached-first UX: cached timings are shown immediately, then refreshed from the API when available.
 - Manual city selection is persisted. Toggle auto-location in the Location Settings to switch between device GPS and manual city.
 - Notification scheduling is implemented, but full push/notification testing on Android requires a dev client or standalone build (Expo Go has limitations).

@@ -70,7 +70,7 @@ I built Daust Pro, a React Native app using Expo that provides prayer times, a Q
 - `screens/SettingsScreen.js` — scrollable, developer name update, removed calculation method control
 - `utils/dateUtils.js` — fixed hijri conversion input handling
 - `utils/storageUtils.js` — coerce lat/lon to `Number` on save/load
-- `app.json` — app name changed to "Daust pro"
+- `app.json` — app name changed to "Daust Pro"
 - `package.json` — added author
 - `.gitignore` — fixed to ignore `debug.keystore`
 - `README.md`, `START_APP.md` — updated with final-run instructions and notes
