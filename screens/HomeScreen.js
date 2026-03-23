@@ -215,7 +215,7 @@ const HomeScreen = ({ navigation }) => {
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <Header title="Muslim Pro" subtitle="Prayer Times & Qibla" />
+        <Header title="Daust Pro" subtitle="Prayer times, Qibla, and daily essentials" />
         <LoadingSpinner message="Loading prayer times..." />
       </SafeAreaView>
     );
@@ -224,7 +224,7 @@ const HomeScreen = ({ navigation }) => {
   if (error) {
     return (
       <SafeAreaView style={styles.container}>
-        <Header title="Muslim Pro" subtitle="Prayer Times & Qibla" />
+        <Header title="Daust Pro" subtitle="Prayer times, Qibla, and daily essentials" />
         <ErrorMessage message={error} onRetry={loadData} />
       </SafeAreaView>
     );

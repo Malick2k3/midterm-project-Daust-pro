@@ -71,8 +71,6 @@ const PrayerTimesScreen = ({ navigation }) => {
     if (loading && !refreshing) {
       return;
     }
-    console.log('[PrayerTimes] loadData START', { loading, refreshing });
-    
     // Set loading state
     if (!refreshing) {
       setLoading(true);
@@ -82,11 +80,9 @@ const PrayerTimesScreen = ({ navigation }) => {
       setError(null);
 
       // Quick path: load cached prayer times immediately so UI shows something
-      console.log('[PrayerTimes] quick cached load attempt');
       try {
         const cachedPrayerTimesStart = await loadPrayerTimes();
         if (cachedPrayerTimesStart && cachedPrayerTimesStart.timings) {
-          console.log('[PrayerTimes] using cached timings for immediate UI');
           setPrayerTimes(cachedPrayerTimesStart.timings);
           if (cachedPrayerTimesStart.hijriDate) {
             setHijriDate(formatHijriDateWithArabic(cachedPrayerTimesStart.hijriDate));
@@ -103,11 +99,9 @@ const PrayerTimesScreen = ({ navigation }) => {
 
       // Determine location to use: auto-detect or manual selection, but DO NOT throw - fall back to saved or default
       let locationData = null;
-      console.log('[PrayerTimes] about to get location. useAutoLocation=', useAutoLocation, 'current location state=', location);
       if (useAutoLocation) {
         try {
           locationData = await getLocationWithCity();
-          console.log('[PrayerTimes] getLocationWithCity returned', locationData);
         } catch (locErr) {
           console.warn('[PrayerTimes] getLocationWithCity failed:', locErr);
           locationData = null;
@@ -138,7 +132,6 @@ const PrayerTimesScreen = ({ navigation }) => {
       }
 
       // Ensure coordinates are numbers using parseFloat for better type safety
-      console.log('[PrayerTimes] normalizing coordinates from', locationData && { lat: locationData.latitude, lon: locationData.longitude });
       let lat = parseFloat(locationData.latitude);
       let lon = parseFloat(locationData.longitude);
       if (isNaN(lat) || isNaN(lon)) {
@@ -147,8 +140,6 @@ const PrayerTimesScreen = ({ navigation }) => {
         lat = fallback.latitude;
         lon = fallback.longitude;
       }
-      console.log('[PrayerTimes] normalized coords', { lat, lon });
-      
       const normalizedLocationData = {
         ...locationData,
         latitude: lat,
@@ -160,9 +151,7 @@ const PrayerTimesScreen = ({ navigation }) => {
       const effectiveMethodId = methodId ?? (await loadCalculationMethod()) ?? undefined;
       
   // Try to load cached data first to prevent flickering
-  console.log('[PrayerTimes] loading cached prayer times');
   const cachedPrayerTimes = await loadPrayerTimes();
-  console.log('[PrayerTimes] cachedPrayerTimes=', !!cachedPrayerTimes, cachedPrayerTimes && Object.keys(cachedPrayerTimes).slice(0,5));
       if (cachedPrayerTimes && cachedPrayerTimes.timings) {
         // Set cached data immediately to prevent flickering
         setPrayerTimes(cachedPrayerTimes.timings);
@@ -180,13 +169,11 @@ const PrayerTimesScreen = ({ navigation }) => {
         setNextPrayer(next);
       }
       
-      console.log('[PrayerTimes] fetching prayer times from API with methodId=', effectiveMethodId);
       const prayerData = await fetchPrayerTimes(
         lat,
         lon,
         effectiveMethodId
       );
-      console.log('[PrayerTimes] fetchPrayerTimes returned', !!prayerData, prayerData && Object.keys(prayerData).slice(0,8));
 
       if (!prayerData) {
         // Only throw error if we don't have cached data
@@ -294,7 +281,6 @@ const PrayerTimesScreen = ({ navigation }) => {
       if ((currentDate !== lastCheck.date ||
           currentMonth !== lastCheck.month ||
           currentYear !== lastCheck.year) && !loading) {
-        console.log('Date changed, reloading data...');
         lastCheck = { date: currentDate, month: currentMonth, year: currentYear };
         // Use ref to call loadData without adding it to dependencies
         if (loadDataRef.current) {

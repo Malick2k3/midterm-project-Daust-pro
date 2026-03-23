@@ -81,17 +81,6 @@ export const schedulePrayerNotifications = async (prayerTimes) => {
         notificationTime.setDate(notificationTime.getDate() + 1);
       }
 
-      // Debug: log the time types before scheduling to catch type mismatches passed to native
-      try {
-        console.log('Scheduling notification for prayer', prayerName, 'time', time, 'types:', {
-          timeType: typeof time,
-          notificationTimeType: typeof notificationTime,
-          notificationTimeValue: notificationTime,
-        });
-      } catch (e) {
-        // ignore
-      }
-
       // Ensure trigger date is a Date object
       if (!(notificationTime instanceof Date) || isNaN(notificationTime.getTime())) {
         console.warn('notificationTime is not a valid Date, skipping:', notificationTime);
@@ -120,14 +109,11 @@ export const schedulePrayerNotifications = async (prayerTimes) => {
     // Schedule all notifications
     for (const notification of notifications) {
       try {
-        console.log('Scheduling with payload:', notification);
         await Notifications.scheduleNotificationAsync(notification);
       } catch (e) {
         console.error('Failed to schedule notification:', e, notification);
       }
     }
-
-    console.log(`Scheduled ${notifications.length} prayer notifications`);
     return true;
   } catch (error) {
     console.error('Error scheduling prayer notifications:', error);

@@ -145,7 +145,7 @@ const SettingsScreen = ({ navigation }) => {
 
           <SettingItem
             title="Developer"
-            subtitle="Cheikh El Hadji Malick Niang mou sell mii"
+            subtitle="Cheikh El Hadji Malick Niang"
           />
         </View>
       </ScrollView>

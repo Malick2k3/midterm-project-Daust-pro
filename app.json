@@ -1,6 +1,6 @@
 {
   "expo": {
-  "name": "Daust pro",
+  "name": "Daust Pro",
     "slug": "daust-pro",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -49,4 +49,3 @@
     ]
   }
 }
-

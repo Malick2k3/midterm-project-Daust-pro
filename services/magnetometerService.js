@@ -42,7 +42,6 @@ export const startMagnetometer = async (callback) => {
         calibrationData.push({ x, y, z });
       } else if (!isCalibrated) {
         isCalibrated = true;
-        console.log('Compass calibrated');
       }
 
       // Call the callback with smoothed heading
