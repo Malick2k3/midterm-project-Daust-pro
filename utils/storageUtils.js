@@ -177,3 +177,16 @@ export const loadLastUpdate = () => loadData(STORAGE_KEYS.LAST_UPDATE);
 
 export const saveTheme = (theme) => saveData(STORAGE_KEYS.THEME, theme);
 export const loadTheme = () => loadData(STORAGE_KEYS.THEME);
+
+export const saveQuranSurahList = (surahList) => saveData(STORAGE_KEYS.QURAN_SURAH_LIST, surahList);
+export const loadQuranSurahList = () => loadData(STORAGE_KEYS.QURAN_SURAH_LIST);
+
+export const saveQuranSurahDetail = (surahNumber, detail) => {
+  if (!surahNumber) return false;
+  return saveData(`${STORAGE_KEYS.QURAN_SURAH_DETAIL_PREFIX}${surahNumber}`, detail);
+};
+
+export const loadQuranSurahDetail = (surahNumber) => {
+  if (!surahNumber) return null;
+  return loadData(`${STORAGE_KEYS.QURAN_SURAH_DETAIL_PREFIX}${surahNumber}`);
+};

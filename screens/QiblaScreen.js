@@ -81,7 +81,7 @@ const QiblaScreen = ({ navigation }) => {
         setMagnetometerSubscription(subscription);
         setMagnetometerAvailable(true);
       } catch (magErr) {
-        // Magnetometer not available on this device (common on web)
+        // Magnetometer not available on this device (on web)
         console.warn('Magnetometer unavailable, falling back to static Qibla display:', magErr);
         setMagnetometerAvailable(false);
         setDeviceHeading(0);

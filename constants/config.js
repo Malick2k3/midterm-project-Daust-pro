@@ -4,6 +4,11 @@ export const API_CONFIG = {
   DEFAULT_METHOD: 2, // ISNA
 };
 
+export const QURAN_API_CONFIG = {
+  BASE_URL: 'https://api.quran.sutanlab.id',
+  TIMEOUT: 12000,
+};
+
 export const MECCA_COORDS = {
   latitude: 21.4225,
   longitude: 39.8262,
@@ -25,6 +30,8 @@ export const STORAGE_KEYS = {
   NOTIFICATIONS_ENABLED: 'notificationsEnabled',
   LAST_UPDATE: 'lastUpdate',
   THEME: 'theme',
+  QURAN_SURAH_LIST: 'quranSurahList',
+  QURAN_SURAH_DETAIL_PREFIX: 'quranSurah_',
 };
 
 export const PRAYER_ORDER = [

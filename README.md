@@ -37,7 +37,7 @@ npx expo start --clear
 - On iOS Simulator (macOS only): `npm run ios`.
 - Web: `npm run web`.
 
-## Notes and caveats
+## Notes 
 
 - Expo Go has limitations for push/notifications. To test full notification flows (especially on Android) you need a development build or standalone app. See: https://expo.dev/development-builds
 - The app uses a cached-first approach for prayer times: when the API is slow the app will show cached times immediately and then update when fresh data arrives.
@@ -58,9 +58,6 @@ npx expo start --clear
    - The Qibla compass rotates with device orientation (on physical devices).
    - Notifications are scheduled (check console logs) — for full functionality use a dev build.
 
-## License
-
-This project is private.
 
 
 

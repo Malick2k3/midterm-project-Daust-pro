@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import PrayerTimesScreen from '../screens/PrayerTimesScreen';
 import QiblaScreen from '../screens/QiblaScreen';
 import TasbihScreen from '../screens/TasbihScreen';
+import QuranScreen from '../screens/QuranScreen';
 import CalendarScreen from '../screens/CalendarScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -30,6 +31,8 @@ const AppNavigator = () => {
             iconName = focused ? 'compass' : 'compass-outline';
           } else if (route.name === 'Tasbih') {
             iconName = focused ? 'ellipse' : 'ellipse-outline';
+          } else if (route.name === 'Quran') {
+            iconName = focused ? 'book' : 'book-outline';
           } else if (route.name === 'Calendar') {
             iconName = focused ? 'calendar' : 'calendar-outline';
           } else if (route.name === 'Settings') {
@@ -85,6 +88,13 @@ const AppNavigator = () => {
         component={TasbihScreen}
         options={{
           tabBarLabel: 'Tasbih',
+        }}
+      />
+      <Tab.Screen
+        name="Quran"
+        component={QuranScreen}
+        options={{
+          tabBarLabel: 'Quran',
         }}
       />
       <Tab.Screen
